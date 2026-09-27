@@ -107,18 +107,26 @@ function MobileJourney() {
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.9", "end 0.5"],
+    offset: ["start 0.8", "end 0.95"],
   })
-  const raw = useSpring(scrollYProgress, { stiffness: 50, damping: 25, mass: 0.5 })
-  const lineScale = reduce ? 1 : raw
+  const lineHeight = useTransform(
+    reduce ? scrollYProgress : scrollYProgress,
+    [0, 1],
+    ["0%", "100%"],
+  )
 
   return (
     <div ref={ref} className="relative ml-3 pl-8">
-      {/* Animated vertical timeline line — draws down as you scroll */}
+      {/* Background track */}
+      <div
+        aria-hidden="true"
+        className="absolute left-0 top-0 h-full w-px bg-forest/10 dark:bg-beige/10"
+      />
+      {/* Animated fill — grows downward as you scroll */}
       <motion.div
         aria-hidden="true"
-        className="absolute left-0 top-0 w-px origin-top bg-forest/35 dark:bg-beige/35"
-        style={{ height: "100%", scaleY: lineScale }}
+        className="absolute left-0 top-0 w-px bg-forest/50 dark:bg-beige/50"
+        style={{ height: reduce ? "100%" : lineHeight }}
       />
 
       <ol className="space-y-6">
