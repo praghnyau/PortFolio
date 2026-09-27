@@ -7,6 +7,7 @@ export function scrollToId(id: string) {
 export const navLinks = [
   { id: "journey", label: "Journey" },
   { id: "projects", label: "Projects" },
+  { id: "milestones", label: "Certificates" },
   { id: "about", label: "About" },
   { id: "contact", label: "Contact" },
 ] as const
