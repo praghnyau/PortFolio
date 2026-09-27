@@ -108,6 +108,17 @@ export function Hero() {
             >
               View projects
             </button>
+            <a
+              href={`${import.meta.env.BASE_URL}resume.html`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-navy/15 px-5 py-3 text-sm text-navy transition hover:-translate-y-0.5 hover:border-forest dark:border-cream/20 dark:text-cream"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <path d="M12 15V3M7 10l5 5 5-5M3 21h18" />
+              </svg>
+              Resume
+            </a>
           </motion.div>
         </motion.div>
 

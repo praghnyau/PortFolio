@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume — U. Praghnya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --forest:  #3F5945;
+        --sage:    #71856F;
+        --navy:    #17202A;
+        --cream:   #F7F5EF;
+        --beige:   #E6D7C3;
+        --ink:     #1e2b22;
+        --muted:   #5a6b5e;
+      }
+
+      body {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--navy);
+        background: var(--cream);
+      }
+
+      /* ── Print button (hides on print) ── */
+      .print-bar {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        padding: 10px 20px;
+        background: var(--forest);
+        z-index: 100;
+      }
+      .print-bar p {
+        color: rgba(247,245,239,0.75);
+        font-size: 13px;
+        align-self: center;
+      }
+      .print-bar button {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        padding: 6px 20px;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        background: var(--cream);
+        color: var(--forest);
+        transition: opacity .15s;
+      }
+      .print-bar button:hover { opacity: .85; }
+
+      /* ── Page ── */
+      .page {
+        max-width: 760px;
+        margin: 64px auto 48px;
+        padding: 48px 52px;
+        background: #fff;
+        box-shadow: 0 4px 48px -12px rgba(23,32,42,0.12);
+        border-radius: 4px;
+      }
+
+      /* ── Header ── */
+      .header { border-bottom: 2px solid var(--forest); padding-bottom: 20px; margin-bottom: 28px; }
+      .header h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 34px;
+        font-weight: 600;
+        color: var(--ink);
+        letter-spacing: -0.5px;
+      }
+      .header .role {
+        margin-top: 4px;
+        font-size: 13.5px;
+        color: var(--forest);
+        font-weight: 500;
+        letter-spacing: 0.02em;
+      }
+      .contact {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 20px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .contact a { color: var(--forest); text-decoration: none; }
+      .contact a:hover { text-decoration: underline; }
+      .contact span::before { content: "·"; margin-right: 6px; color: var(--beige); }
+      .contact span:first-child::before { content: ""; margin: 0; }
+
+      /* ── Sections ── */
+      section { margin-bottom: 26px; }
+      .section-title {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--forest);
+        border-bottom: 1px solid var(--beige);
+        padding-bottom: 5px;
+        margin-bottom: 14px;
+      }
+
+      /* ── Education ── */
+      .edu-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+      .edu-row h3 { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+      .edu-row .year { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+      .edu-row .institute { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+      /* ── Skills ── */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px 24px;
+      }
+      .skill-row { display: flex; gap: 8px; font-size: 13px; }
+      .skill-row .cat { font-weight: 600; color: var(--forest); min-width: 110px; }
+      .skill-row .items { color: var(--navy); }
+
+      /* ── Projects ── */
+      .project { margin-bottom: 16px; }
+      .project:last-child { margin-bottom: 0; }
+      .project-header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+      .project-header h3 { font-size: 14px; font-weight: 600; color: var(--ink); }
+      .project-header .tech {
+        font-size: 11.5px;
+        color: var(--forest);
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .project p { font-size: 13px; color: var(--muted); margin-top: 3px; }
+      .project a { font-size: 12px; color: var(--sage); text-decoration: none; }
+      .project a:hover { text-decoration: underline; }
+
+      /* ── Achievements ── */
+      .achievement { display: flex; gap: 12px; margin-bottom: 10px; font-size: 13px; }
+      .achievement:last-child { margin-bottom: 0; }
+      .achievement .ach-year { min-width: 68px; color: var(--sage); font-size: 12px; padding-top: 1px; }
+      .achievement .ach-body h4 { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+      .achievement .ach-body .ach-cat {
+        display: inline-block;
+        font-size: 10.5px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--forest);
+        background: rgba(63,89,69,0.08);
+        border-radius: 4px;
+        padding: 1px 6px;
+        margin-bottom: 2px;
+      }
+      .achievement .ach-body p { color: var(--muted); }
+
+      /* ── Print styles ── */
+      @media print {
+        .print-bar { display: none !important; }
+        body { background: #fff; font-size: 13px; }
+        .page {
+          margin: 0;
+          padding: 32px 40px;
+          box-shadow: none;
+          border-radius: 0;
+          max-width: 100%;
+        }
+        a { color: inherit !important; text-decoration: none !important; }
+        section { margin-bottom: 20px; }
+        .project { margin-bottom: 12px; }
+        .achievement { margin-bottom: 7px; }
+      }
+
+      @media (max-width: 600px) {
+        .page { margin: 56px 12px 24px; padding: 28px 20px; }
+        .skills-grid { grid-template-columns: 1fr; }
+        .edu-row, .project-header { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Print bar -->
+    <div class="print-bar">
+      <p>To save as PDF: click the button → use your browser's Print → choose "Save as PDF"</p>
+      <button onclick="window.print()">🖨 Print / Save as PDF</button>
+    </div>
+
+    <div class="page">
+
+      <!-- Header -->
+      <header class="header">
+        <h1>U. Praghnya</h1>
+        <p class="role">B.Tech CSE (AI &amp; ML) &nbsp;·&nbsp; Developer &nbsp;·&nbsp; Learner</p>
+        <div class="contact">
+          <span><a href="mailto:unguturipraghnya@gmail.com">unguturipraghnya@gmail.com</a></span>
+          <span><a href="https://github.com/praghnyau" target="_blank">github.com/praghnyau</a></span>
+          <span><a href="https://www.linkedin.com/in/praghnya" target="_blank">linkedin.com/in/praghnya</a></span>
+        </div>
+      </header>
+
+      <!-- Education -->
+      <section>
+        <p class="section-title">Education</p>
+        <div class="edu-row">
+          <div>
+            <h3>B.Tech — Computer Science Engineering (AI &amp; ML)</h3>
+            <p class="institute">BVRIT Hyderabad College Of Engineering for Women, Hyderabad</p>
+          </div>
+          <span class="year">2024 – Present</span>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section>
+        <p class="section-title">Skills</p>
+        <div class="skills-grid">
+          <div class="skill-row">
+            <span class="cat">Languages</span>
+            <span class="items">C, Python, Java, SQL</span>
+          </div>
+          <div class="skill-row">
+            <span class="cat">Web</span>
+            <span class="items">HTML, CSS, JavaScript</span>
+          </div>
+          <div class="skill-row">
+            <span class="cat">AI / ML</span>
+            <span class="items">LLMs, RAG, LangChain, FAISS</span>
+          </div>
+          <div class="skill-row">
+            <span class="cat">Tools</span>
+            <span class="items">Git, VS Code, Android Studio</span>
+          </div>
+          <div class="skill-row">
+            <span class="cat">Platforms</span>
+            <span class="items">Firebase, Google Cloud, Supabase</span>
+          </div>
+          <div class="skill-row">
+            <span class="cat">Backend / Data</span>
+            <span class="items">PostgreSQL, Elixir, Phoenix</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section>
+        <p class="section-title">Projects</p>
+
+        <div class="project">
+          <div class="project-header">
+            <h3>Smart-Health</h3>
+            <span class="tech">JavaScript · Firebase · AI/ML</span>
+          </div>
+          <p>AI-powered healthcare coordination platform for clinics, pharmacies, labs, and district networks. Keeps clinical workflows, inventory, and coordination in one place.</p>
+          <a href="https://github.com/praghnyau/Smart-Health" target="_blank">github.com/praghnyau/Smart-Health</a>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <h3>Token Evaluator</h3>
+            <span class="tech">Python · LLMs · Telemetry</span>
+          </div>
+          <p>Python tool for evaluating and analysing token usage in LLM interactions and agent sessions. Makes token consumption and cost visible and measurable.</p>
+          <a href="https://github.com/praghnyau/Token_Evaluator" target="_blank">github.com/praghnyau/Token_Evaluator</a>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <h3>StageSync</h3>
+            <span class="tech">HTML · CSS · JavaScript</span>
+          </div>
+          <p>Web-based music events app for song submissions, scheduling, and host coordination. Centralises campus music event management in one interface.</p>
+          <a href="https://github.com/praghnyau/Musicevents_application" target="_blank">github.com/praghnyau/Musicevents_application</a>
+        </div>
+      </section>
+
+      <!-- Certifications & Achievements -->
+      <section>
+        <p class="section-title">Certifications &amp; Achievements</p>
+
+        <div class="achievement">
+          <span class="ach-year">Sep 2026</span>
+          <div class="ach-body">
+            <span class="ach-cat">Certification</span>
+            <h4>Oracle Certified Foundations Associate</h4>
+            <p>Oracle Cloud Infrastructure Certified AI Foundations Associate.</p>
+          </div>
+        </div>
+
+        <div class="achievement">
+          <span class="ach-year">Sep 2026</span>
+          <div class="ach-body">
+            <span class="ach-cat">Certification</span>
+            <h4>SQL (Basic) — HackerRank</h4>
+            <p>HackerRank skill certification.</p>
+          </div>
+        </div>
+
+        <div class="achievement">
+          <span class="ach-year">Aug 2026</span>
+          <div class="ach-body">
+            <span class="ach-cat">Participation</span>
+            <h4>Google Cloud Gen AI Academy APAC 2026</h4>
+            <p>Cohort 2 Hackathon powered by Hack2skill — applied Generative AI &amp; Google Cloud technologies to build solutions for real-world challenges.</p>
+          </div>
+        </div>
+
+        <div class="achievement">
+          <span class="ach-year">Jul 2026</span>
+          <div class="ach-body">
+            <span class="ach-cat">Participation</span>
+            <h4>QuizOff 2026 — India's Biggest AI Quiz</h4>
+            <p>Competed among 5,25,000+ students from 48,500+ institutions across the globe on Unstop.</p>
+          </div>
+        </div>
+
+        <div class="achievement">
+          <span class="ach-year">Jul 2026</span>
+          <div class="ach-body">
+            <span class="ach-cat">Certification</span>
+            <h4>Python (Basic) — HackerRank</h4>
+            <p>HackerRank skill certification.</p>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /page -->
+  </body>
+</html>
