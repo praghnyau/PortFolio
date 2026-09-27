@@ -191,31 +191,13 @@ function HeroLandscape({
         animate={{ opacity: 1 }}
         transition={{ delay: reduce ? 0 : 0.4, duration: 0.4 }}
       >
-        {/* Hidden path for motion-path reference */}
-        <motion.circle
-          cx="0"
-          cy="0"
-          r="0"
-          fill="transparent"
-          style={{
-            offsetPath: `path("M118 470 C 150 430, 170 400, 188 372 C 210 338, 236 348, 250 320 C 268 284, 292 270, 318 248 C 352 220, 372 198, 404 168")`,
-            offsetRotate: "0deg",
-          }}
-          animate={{ offsetDistance: reduce ? "100%" : ["0%", "100%"] }}
-          transition={{
-            duration: reduce ? 0 : 1.6,
-            ease: [0.22, 1, 0.36, 1],
-            delay: 0,
-          }}
-        />
-
-        {/* Avatar group — follows the same path via separate motion.g */}
+        {/* Avatar group — x/y keyframes trace the path (no CSS motion-path, works on all browsers) */}
         <motion.g
-          style={{
-            offsetPath: `path("M118 470 C 150 430, 170 400, 188 372 C 210 338, 236 348, 250 320 C 268 284, 292 270, 318 248 C 352 220, 372 198, 404 168")`,
-            offsetRotate: "0deg",
+          initial={{ x: 118, y: 470 }}
+          animate={{
+            x: reduce ? 404 : [118, 188, 250, 318, 404],
+            y: reduce ? 168 : [470, 372, 320, 248, 168],
           }}
-          animate={{ offsetDistance: reduce ? "100%" : ["0%", "100%"] }}
           transition={{
             duration: reduce ? 0 : 1.6,
             ease: [0.22, 1, 0.36, 1],
