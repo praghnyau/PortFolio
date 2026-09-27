@@ -35,7 +35,7 @@ export const projects: Project[] = [
   {
     id: "music-controller",
     number: "03",
-    title: "Music Events Application",
+    title: "StageSync",
     summary: "A web-based music events app for submissions, scheduling, and host coordination.",
     problem:
       "Campus music events were coordinated by hand. This project centralises song submissions and performance order.",
