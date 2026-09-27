@@ -85,7 +85,7 @@ export function MilestoneBody({
             <span className="absolute inline-flex h-full w-full rounded-full bg-sage opacity-50 motion-safe:animate-ping" />
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-forest" />
           </span>
-          You are here
+          Ongoing
         </p>
       ) : null}
       {isNext ? <DistantPeak /> : null}

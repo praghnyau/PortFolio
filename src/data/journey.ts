@@ -53,7 +53,7 @@ export const journeyMilestones: JourneyMilestone[] = [
     number: "05",
     year: "Now",
     title: "Current position",
-    subtitle: "You are here",
+    subtitle: "Actively building",
     kind: "here",
     body: "Currently exploring AI, software engineering, and better ways to turn ideas into useful products.",
   },
