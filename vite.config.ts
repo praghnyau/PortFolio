@@ -4,4 +4,6 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: '/PortFolio/',
+  build: { outDir: 'docs' },
 })
