@@ -1,6 +1,8 @@
 import { FadeIn, SectionHeading } from "./SectionHeading"
 
 export function About() {
+  const portraitSrc = `${import.meta.env.BASE_URL}portrait.png`
+
   return (
     <section id="about" className="scroll-mt-24 px-5 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-6xl">
@@ -14,7 +16,7 @@ export function About() {
                 <div className="rounded-full p-[5px] bg-cream dark:bg-navy">
                   <div className="overflow-hidden rounded-full shadow-[inset_0_2px_12px_rgba(23,32,42,0.08)]">
                     <img
-                      src="/portrait.png"
+                      src={portraitSrc}
                       alt="Portrait of U.Praghnya"
                       width={650}
                       height={650}
