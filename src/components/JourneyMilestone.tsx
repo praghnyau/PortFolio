@@ -8,6 +8,7 @@ export function JourneyMilestoneCard({
   milestone: JourneyMilestoneData
   align: "left" | "right"
 }) {
+  const portraitSrc = `${import.meta.env.BASE_URL}portrait.png`
   const isHere = milestone.kind === "here"
   const isNext = milestone.kind === "next"
 
@@ -35,7 +36,7 @@ export function JourneyMilestoneCard({
             <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-forest via-sage to-beige p-[2px] shadow-[0_0_0_3px_rgba(113,133,111,0.25)]">
               <span className="flex h-full w-full items-center justify-center rounded-full bg-cream p-[1.5px] dark:bg-navy">
                 <img
-                  src="/portrait.png"
+                  src={portraitSrc}
                   alt="U.Praghnya — current position"
                   className="h-full w-full rounded-full object-cover"
                 />

@@ -54,6 +54,8 @@ export type Achievement = {
   placeholder?: boolean
 }
 
+const certificatesBase = `${import.meta.env.BASE_URL}certificates/`
+
 export const achievements: Achievement[] = [
   // Sep 2026
   {
@@ -61,16 +63,16 @@ export const achievements: Achievement[] = [
     title: "Oracle Certified Foundations Associate",
     detail: "Oracle Cloud Infrastructure Certified AI Foundations Associate.",
     year: "Sep 2026",
-    image: "/certificates/oracle-ai-foundations.png",
-    href: "/certificates/oracle-ai-foundations.png",
+    image: `${certificatesBase}oracle-ai-foundations.png`,
+    href: `${certificatesBase}oracle-ai-foundations.png`,
   },
   {
     category: "Certifications",
     title: "SQL (Basic)",
     detail: "HackerRank skill certification, earned 25 Sep 2026.",
     year: "Sep 2026",
-    image: "/certificates/sql-basic.png",
-    href: "/certificates/sql-basic.pdf",
+    image: `${certificatesBase}sql-basic.png`,
+    href: `${certificatesBase}sql-basic.pdf`,
   },
   // Aug 2026
   {
@@ -79,8 +81,8 @@ export const achievements: Achievement[] = [
     detail:
       "Cohort 2 Hackathon powered by Hack2skill — applied Generative AI & Google Cloud technologies to build innovative solutions for real-world challenges.",
     year: "Aug 2026",
-    image: "/certificates/google-cloud-genai-academy.png",
-    href: "/certificates/google-cloud-genai-academy.png",
+    image: `${certificatesBase}google-cloud-genai-academy.png`,
+    href: `${certificatesBase}google-cloud-genai-academy.png`,
   },
   // Jul 2026
   {
@@ -89,16 +91,16 @@ export const achievements: Achievement[] = [
     detail:
       "Competed among 5,25,000+ students from 48,500+ institutions across the globe on Unstop, organised by CampusCrew.",
     year: "Jul 2026",
-    image: "/certificates/quizoff-2026.png",
-    href: "/certificates/quizoff-2026.png",
+    image: `${certificatesBase}quizoff-2026.png`,
+    href: `${certificatesBase}quizoff-2026.png`,
   },
   {
     category: "Certifications",
     title: "Python (Basic)",
     detail: "HackerRank skill certification, earned 21 Jul 2026.",
     year: "Jul 2026",
-    image: "/certificates/python-basic.png",
-    href: "/certificates/python-basic.pdf",
+    image: `${certificatesBase}python-basic.png`,
+    href: `${certificatesBase}python-basic.pdf`,
   },
   // 2025
   {

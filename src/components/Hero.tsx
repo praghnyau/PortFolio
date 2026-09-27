@@ -14,6 +14,7 @@ const heroItem = {
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
+  const portraitSrc = `${import.meta.env.BASE_URL}portrait.png`
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -49,7 +50,7 @@ export function Hero() {
             <div className="relative rounded-full p-[2.5px] bg-gradient-to-br from-forest via-sage to-beige shadow-[0_12px_32px_-12px_rgba(63,89,69,0.45)]">
               <div className="rounded-full p-[3px] bg-cream dark:bg-navy">
                 <img
-                  src="/portrait.png"
+                  src={portraitSrc}
                   alt="Portrait of U.Praghnya"
                   width={72}
                   height={72}
@@ -112,7 +113,7 @@ export function Hero() {
 
         <div className="relative mx-auto w-full max-w-lg">
           <motion.div style={{ y: mountainY }} className="will-change-transform">
-            <HeroLandscape pathY={pathY} />
+            <HeroLandscape pathY={pathY} portraitSrc={portraitSrc} />
           </motion.div>
         </div>
       </div>
@@ -120,7 +121,13 @@ export function Hero() {
   )
 }
 
-function HeroLandscape({ pathY }: { pathY: ReturnType<typeof useTransform<number, number>> }) {
+function HeroLandscape({
+  pathY,
+  portraitSrc,
+}: {
+  pathY: ReturnType<typeof useTransform<number, number>>
+  portraitSrc: string
+}) {
   const reduce = useReducedMotion()
 
   return (
@@ -220,7 +227,7 @@ function HeroLandscape({ pathY }: { pathY: ReturnType<typeof useTransform<number
           <circle cx="0" cy="0" r="15" fill="none" stroke="#3F5945" strokeWidth="2" className="dark:stroke-beige" />
           {/* Profile pic */}
           <image
-            href="/portrait.png"
+            href={portraitSrc}
             x="-13"
             y="-13"
             width="26"
