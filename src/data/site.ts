@@ -8,5 +8,7 @@ export const site = {
   github: "https://github.com/praghnyau",
   // Replace with a real LinkedIn profile URL when available.
   linkedin: "https://www.linkedin.com/in/praghnya",
+  leetcode: "https://leetcode.com/u/praghnyau",
+  hackerrank: "https://www.hackerrank.com/profile/praghnyau",
   year: 2026,
 } as const

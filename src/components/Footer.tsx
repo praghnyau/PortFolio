@@ -28,6 +28,22 @@ export function Footer() {
           >
             LinkedIn
           </TransitionLink>
+          <TransitionLink
+            className="text-navy/70 transition hover:text-forest dark:text-cream/70 dark:hover:text-beige"
+            href={site.leetcode}
+            target="_blank"
+            rel="noreferrer"
+          >
+            LeetCode
+          </TransitionLink>
+          <TransitionLink
+            className="text-navy/70 transition hover:text-forest dark:text-cream/70 dark:hover:text-beige"
+            href={site.hackerrank}
+            target="_blank"
+            rel="noreferrer"
+          >
+            HackerRank
+          </TransitionLink>
           <a
             className="text-navy/70 transition hover:text-forest dark:text-cream/70 dark:hover:text-beige"
             href={`mailto:${site.email}`}

@@ -21,6 +21,8 @@ export function Contact() {
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <ContactLink href={site.github} label="GitHub" icon="github" />
             <ContactLink href={site.linkedin} label="LinkedIn" icon="linkedin" />
+            <ContactLink href={site.leetcode} label="LeetCode" icon="leetcode" />
+            <ContactLink href={site.hackerrank} label="HackerRank" icon="hackerrank" />
             <ContactLink href={`mailto:${site.email}`} label="Email me" icon="mail" />
           </div>
         </FadeIn>
@@ -36,7 +38,7 @@ function ContactLink({
 }: {
   href: string
   label: string
-  icon: "github" | "linkedin" | "mail"
+  icon: "github" | "linkedin" | "leetcode" | "hackerrank" | "mail"
 }) {
   return (
     <TransitionLink
@@ -51,7 +53,7 @@ function ContactLink({
   )
 }
 
-function Icon({ name }: { name: "github" | "linkedin" | "mail" }) {
+function Icon({ name }: { name: "github" | "linkedin" | "leetcode" | "hackerrank" | "mail" }) {
   if (name === "github") {
     return (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -63,6 +65,20 @@ function Icon({ name }: { name: "github" | "linkedin" | "mail" }) {
     return (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M6.5 9H4V20h2.5V9ZM5.25 4A1.5 1.5 0 1 0 5.26 7 1.5 1.5 0 0 0 5.25 4ZM20 20h-2.5v-5.6c0-1.56-.56-2.62-1.95-2.62-1.06 0-1.7.72-1.97 1.41-.1.25-.13.6-.13.95V20H11V9h2.4v1.51c.32-.55 1.26-1.71 3.08-1.71 2.25 0 3.52 1.47 3.52 4.63V20Z" />
+      </svg>
+    )
+  }
+  if (name === "leetcode") {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .666-1.607c.014-.015.03-.03.045-.045l3.855-4.127 5.406-5.788c.54-.54.54-1.414 0-1.954A1.37 1.37 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
+      </svg>
+    )
+  }
+  if (name === "hackerrank") {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm3.176 15.656h-1.632v-3.232h-3.088v3.232H8.824V8.344h1.632v3.088h3.088V8.344h1.632v7.312z" />
       </svg>
     )
   }
