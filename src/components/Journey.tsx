@@ -12,7 +12,6 @@ import { SectionHeading } from "./SectionHeading"
 
 export function Journey() {
   const ref = useRef<HTMLElement>(null)
-  const portraitSrc = `${import.meta.env.BASE_URL}portrait.png`
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -66,7 +65,7 @@ export function Journey() {
         />
 
         <div className="relative md:hidden">
-          <MobileJourney portraitSrc={portraitSrc} />
+          <MobileJourney />
         </div>
 
         <div className="relative hidden md:block">
@@ -101,23 +100,15 @@ export function Journey() {
   )
 }
 
-function MobileJourney({ portraitSrc }: { portraitSrc: string }) {
+function MobileJourney() {
   return (
     <ol className="relative ml-3 border-l border-forest/30 pl-8 dark:border-beige/30">
       {journeyMilestones.map((milestone) => (
         <li key={milestone.id} className="relative pb-10 last:pb-0">
           {milestone.kind === "here" ? (
-            <span className="absolute -left-[46px] top-0 flex items-center justify-center">
+            <span className="absolute -left-[43px] top-0 flex items-center justify-center">
               <span className="absolute inline-flex h-8 w-8 rounded-full bg-forest/20 motion-safe:animate-ping" />
-              <span className="relative flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-forest via-sage to-beige p-[2px]">
-                <span className="flex h-full w-full items-center justify-center rounded-full bg-cream p-[1px] dark:bg-navy">
-                  <img
-                    src={portraitSrc}
-                    alt="current"
-                    className="h-full w-full rounded-full object-cover"
-                  />
-                </span>
-              </span>
+              <span className="relative h-3.5 w-3.5 rounded-full bg-forest dark:bg-beige" />
             </span>
           ) : (
             <span

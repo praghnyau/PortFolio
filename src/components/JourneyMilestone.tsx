@@ -8,7 +8,6 @@ export function JourneyMilestoneCard({
   milestone: JourneyMilestoneData
   align: "left" | "right"
 }) {
-  const portraitSrc = `${import.meta.env.BASE_URL}portrait.png`
   const isHere = milestone.kind === "here"
   const isNext = milestone.kind === "next"
 
@@ -28,20 +27,12 @@ export function JourneyMilestoneCard({
 
       <div className="relative z-10 flex justify-center">
         {isHere ? (
-          /* ── Mini profile pic for the current milestone ── */
+          /* ── Pulsing dot for the current milestone ── */
           <span className="relative flex items-center justify-center">
             {/* Pulse ring */}
             <span className="absolute inline-flex h-10 w-10 rounded-full bg-forest/20 motion-safe:animate-ping" />
-            {/* Forest border ring */}
-            <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-forest via-sage to-beige p-[2px] shadow-[0_0_0_3px_rgba(113,133,111,0.25)]">
-              <span className="flex h-full w-full items-center justify-center rounded-full bg-cream p-[1.5px] dark:bg-navy">
-                <img
-                  src={portraitSrc}
-                  alt="U.Praghnya — current position"
-                  className="h-full w-full rounded-full object-cover"
-                />
-              </span>
-            </span>
+            {/* Filled dot */}
+            <span className="relative h-4 w-4 rounded-full bg-forest shadow-[0_0_0_3px_rgba(113,133,111,0.25)] dark:bg-beige" />
           </span>
         ) : (
           <span
