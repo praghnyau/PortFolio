@@ -1,11 +1,13 @@
 import {
   motion,
+  useInView,
   useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
 } from "framer-motion"
 import { useRef } from "react"
+import type { JourneyMilestone as JourneyMilestoneData } from "../data/journey"
 import { journeyMilestones } from "../data/journey"
 import { JourneyMilestoneCard, MilestoneBody } from "./JourneyMilestone"
 import { SectionHeading } from "./SectionHeading"
@@ -101,28 +103,78 @@ export function Journey() {
 }
 
 function MobileJourney() {
+  const ref = useRef<HTMLDivElement>(null)
+  const reduce = useReducedMotion()
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.9", "end 0.5"],
+  })
+  const raw = useSpring(scrollYProgress, { stiffness: 50, damping: 25, mass: 0.5 })
+  const lineScale = reduce ? 1 : raw
+
   return (
-    <ol className="relative ml-3 border-l border-forest/30 pl-8 dark:border-beige/30">
-      {journeyMilestones.map((milestone) => (
-        <li key={milestone.id} className="relative pb-10 last:pb-0">
-          {milestone.kind === "here" ? (
-            <span className="absolute -left-[43px] top-0 flex items-center justify-center">
-              <span className="absolute inline-flex h-8 w-8 rounded-full bg-forest/20 motion-safe:animate-ping" />
-              <span className="relative h-3.5 w-3.5 rounded-full bg-forest dark:bg-beige" />
-            </span>
-          ) : (
-            <span
-              className="absolute -left-[37px] top-1.5 h-3 w-3 rounded-full bg-sage"
-              aria-hidden="true"
-            />
-          )}
-          <MilestoneBody
-            milestone={milestone}
-            isHere={milestone.kind === "here"}
-            isNext={milestone.kind === "next"}
-          />
-        </li>
-      ))}
-    </ol>
+    <div ref={ref} className="relative ml-3 pl-8">
+      {/* Animated vertical timeline line — draws down as you scroll */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute left-0 top-0 w-px origin-top bg-forest/35 dark:bg-beige/35"
+        style={{ height: "100%", scaleY: lineScale }}
+      />
+
+      <ol className="space-y-6">
+        {journeyMilestones.map((milestone, index) => (
+          <MobileJourneyItem key={milestone.id} milestone={milestone} index={index} />
+        ))}
+      </ol>
+    </div>
+  )
+}
+
+function MobileJourneyItem({
+  milestone,
+  index: _index,
+}: {
+  milestone: JourneyMilestoneData
+  index: number
+}) {
+  const ref = useRef<HTMLLIElement>(null)
+  const isInView = useInView(ref, { once: true, margin: "-40px 0px" })
+  const reduce = useReducedMotion()
+  const isHere = milestone.kind === "here"
+  const isNext = milestone.kind === "next"
+
+  return (
+    <motion.li
+      ref={ref}
+      initial={reduce ? false : { opacity: 0, x: -20 }}
+      animate={isInView ? { opacity: 1, x: 0 } : undefined}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="relative"
+    >
+      {/* Timeline dot */}
+      {isHere ? (
+        <span
+          className="absolute -left-[46px] top-4 flex items-center justify-center"
+          aria-hidden="true"
+        >
+          <span className="absolute inline-flex h-8 w-8 rounded-full bg-forest/20 motion-safe:animate-ping" />
+          <span className="relative h-3.5 w-3.5 rounded-full bg-forest shadow-[0_0_0_2.5px_rgba(113,133,111,0.3)] dark:bg-beige" />
+        </span>
+      ) : (
+        <span
+          className="absolute -left-[37px] top-[22px] h-2.5 w-2.5 rounded-full border-2 border-forest/60 bg-cream dark:border-beige/60 dark:bg-navy"
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Card */}
+      <article
+        className={`rounded-2xl border border-navy/8 bg-cream/70 p-5 shadow-[0_8px_28px_-18px_rgba(23,32,42,0.25)] dark:border-cream/10 dark:bg-navy/40 ${
+          isHere ? "ring-1 ring-sage/50" : ""
+        }`}
+      >
+        <MilestoneBody milestone={milestone} isHere={isHere} isNext={isNext} />
+      </article>
+    </motion.li>
   )
 }
