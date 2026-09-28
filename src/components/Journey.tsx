@@ -14,6 +14,7 @@ import { SectionHeading } from "./SectionHeading"
 
 export function Journey() {
   const ref = useRef<HTMLElement>(null)
+  const portraitSrc = `${import.meta.env.BASE_URL}portrait.png`
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -114,7 +115,7 @@ export function Journey() {
               <circle cx="0" cy="0" r="15" fill="#f7f5ef" className="dark:fill-navy" />
               <circle cx="0" cy="0" r="15" fill="none" stroke="#3F5945" strokeWidth="2.5" className="dark:stroke-beige" />
               <image
-                href="/portrait.png"
+                href={portraitSrc}
                 x="-13" y="-13"
                 width="26" height="26"
                 clipPath="url(#journeyAvatarClip)"

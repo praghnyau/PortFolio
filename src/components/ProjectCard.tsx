@@ -83,6 +83,12 @@ export function ProjectCard({
             GitHub
           </span>
         )}
+        {project.live && (
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-forest/20 bg-forest/8 px-3.5 py-1.5 text-xs font-medium text-forest dark:border-beige/20 dark:bg-beige/8 dark:text-beige">
+            <span className="h-1.5 w-1.5 rounded-full bg-forest dark:bg-beige" />
+            Live Demo
+          </span>
+        )}
         <span className="ml-auto kicker text-[0.68rem] text-navy/40 transition group-hover:translate-x-1 group-hover:text-navy dark:text-cream/40 dark:group-hover:text-cream">
           Read more →
         </span>
