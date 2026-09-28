@@ -42,4 +42,16 @@ export const projects: Project[] = [
     technologies: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/praghnyau/Musicevents_application",
   },
+  {
+    id: "fifteen-puzzle",
+    number: "04",
+    title: "15 Puzzle",
+    summary:
+      "A classic 15-tile sliding puzzle game built and deployed as an interactive web app.",
+    problem:
+      "Sliding puzzles are a great way to explore algorithmic thinking and UI state management. This project brings the classic 15-puzzle to the browser with smooth interactions.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/praghnyau/15_puzzle",
+    live: "https://praghnyau.github.io/15_puzzle/",
+  },
 ]

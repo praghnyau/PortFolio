@@ -77,6 +77,13 @@ export function Journey() {
             preserveAspectRatio="none"
             aria-hidden="true"
           >
+            <defs>
+              <clipPath id="journeyAvatarClip">
+                <circle cx="0" cy="0" r="13" />
+              </clipPath>
+            </defs>
+
+            {/* Winding path */}
             <motion.path
               d="M110 20 C 70 140, 170 220, 110 340 C 50 460, 170 540, 110 680 C 40 820, 180 900, 110 1040 C 50 1160, 160 1240, 110 1380 C 80 1460, 130 1520, 110 1580"
               fill="none"
@@ -86,7 +93,36 @@ export function Journey() {
               strokeLinecap="round"
               style={{ pathLength }}
             />
+
+            {/* Profile pic travels along the path as user scrolls */}
+            <motion.g
+              style={{
+                offsetPath: `path("M110 20 C 70 140, 170 220, 110 340 C 50 460, 170 540, 110 680 C 40 820, 180 900, 110 1040 C 50 1160, 160 1240, 110 1380 C 80 1460, 130 1520, 110 1580")`,
+                offsetDistance: reduce ? "100%" : (raw as unknown as string),
+                offsetRotate: "0deg",
+              }}
+            >
+              <motion.circle
+                cx="0" cy="0"
+                fill="none"
+                stroke="#3F5945"
+                strokeWidth="1.2"
+                className="dark:stroke-beige"
+                animate={{ r: [15, 30], opacity: [0.55, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
+              />
+              <circle cx="0" cy="0" r="15" fill="#f7f5ef" className="dark:fill-navy" />
+              <circle cx="0" cy="0" r="15" fill="none" stroke="#3F5945" strokeWidth="2.5" className="dark:stroke-beige" />
+              <image
+                href="/portrait.png"
+                x="-13" y="-13"
+                width="26" height="26"
+                clipPath="url(#journeyAvatarClip)"
+                preserveAspectRatio="xMidYMid slice"
+              />
+            </motion.g>
           </svg>
+
           <ol className="relative space-y-24">
             {journeyMilestones.map((milestone, index) => (
               <JourneyMilestoneCard
